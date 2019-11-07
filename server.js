@@ -5,31 +5,61 @@ var app = express();
 app.use(bodyParser.json());
 
 var obj = {
-    "widget": {
-        "window": {
-            "title": "Sample Konfabulator Widget",
-            "name": "main_window",
-            "width": 500,
-            "height": 500
+    "colors": [
+        {
+            "color": "black",
+            "category": "hue",
+            "type": "primary",
+            "code": {
+                "rgba": [255, 255, 255, 1],
+                "hex": "#000"
+            }
         },
-        "image": {
-            "src": "Images/Sun.png",
-            "name": "sun1",
-            "hOffset": 250,
-            "vOffset": 250,
-            "alignment": "center"
+        {
+            "color": "white",
+            "category": "value",
+            "code": {
+                "rgba": [0, 0, 0, 1],
+                "hex": "#FFF"
+            }
         },
-        "text": {
-            "data": "Click Here",
-            "size": 36,
-            "style": "bold",
-            "name": "text1",
-            "hOffset": 250,
-            "vOffset": 100,
-            "alignment": "center",
-            "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
-        }
-    }
+        {
+            "color": "red",
+            "category": "hue",
+            "type": "primary",
+            "code": {
+                "rgba": [255, 0, 0, 1],
+                "hex": "#FF0"
+            }
+        },
+        {
+            "color": "blue",
+            "category": "hue",
+            "type": "primary",
+            "code": {
+                "rgba": [0, 0, 255, 1],
+                "hex": "#00F"
+            }
+        },
+        {
+            "color": "yellow",
+            "category": "hue",
+            "type": "primary",
+            "code": {
+                "rgba": [255, 255, 0, 1],
+                "hex": "#FF0"
+            }
+        },
+        {
+            "color": "green",
+            "category": "hue",
+            "type": "secondary",
+            "code": {
+                "rgba": [0, 255, 0, 1],
+                "hex": "#0F0"
+            }
+        },
+    ]
 };
 
 var server = app.listen(process.env.PORT || 8080, function () {
