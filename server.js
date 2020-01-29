@@ -70,11 +70,15 @@ io.on("connection", socket => {
     socket.on("login", name => {
         console.log("USERS LOGIN", name);
         socket.emit(name, socket.id);
+        socket.emit('server connected', socket.id);
+
     });
 
     socket.on("add user", name => {
         console.log("USERS ADD", name);
         socket.emit(name, socket.id);
+        socket.emit('server connected', socket.id);
+
     });
 
     io.emit("documents", Object.keys(documents));
