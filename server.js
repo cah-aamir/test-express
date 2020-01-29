@@ -152,10 +152,12 @@ var obj = {
     ]
 };
 
-// app.get("/api/contacts", function (req, res) {
-//     // pusher.trigger('my-channel', 'my-event', {
-//     //     "message": "hello world"
-//     // });
+app.get("/api/contacts", function (req, res) {
+    // pusher.trigger('my-channel', 'my-event', {
+    //     "message": "hello world"
+    // })
+    res.json({ message: "CONTACTS FOR YOU" });
+});
 
 //     pusher.trigger('events-channel', 'new-like', {
 //         "message": "hello books"
