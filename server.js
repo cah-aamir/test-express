@@ -1,14 +1,16 @@
-var express = require('express');
+var app = require('express')();
 var bodyParser = require('body-parser');
 var Pusher = require('pusher');
 const cors = require("cors");
 const multipart = require("connect-multiparty");
-const http = require('http').Server(app);
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
+
+const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 var connected = false;
 var socketOut;
-var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -181,10 +183,10 @@ app.get('/emit', (req, res) => {
     res.json({ message: "Book added succesfully" })
 })
 
-http.listen(4444);
+// http.listen(4444);
 
-var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
+http.listen(process.env.PORT || 8080, function () {
+    var port = process.env.PORT || 8080
     console.log('App is running on port: ', port);
 });
 
