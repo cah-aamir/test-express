@@ -33,8 +33,10 @@ const documents = {
 
 const users = {};
 io.on("connection", socket => {
-    getLocalIp();
-    console.log('SOCKET ID: ', socket.id)
+    // getLocalIp();
+    console.log('SOCKET ID: ', socket.id);
+
+
     connected = true;
     socketOut = socket;
     let previousId;
@@ -45,6 +47,9 @@ io.on("connection", socket => {
     };
 
     socket.on("getDoc", docId => {
+        var usersArr = Object.keys(users);
+        var lastUser = users[usersArr[usersArr.length -1]];
+        io.to(lastUser).emit('aamir', 'TARGETTING ID');
         safeJoin(docId);
         console.log("getDoc called, doc: " + documents[docId]);
         socket.emit("document", documents[docId]);
@@ -66,6 +71,7 @@ io.on("connection", socket => {
     socket.on("mapUser", name => {
         users[name] = socket.id;
         console.log("USERS AFTER MAP", users);
+        console.log("Username", name, " Socket ID: ", socket.id);
         socket.emit(name, socket.id);
     });
 
@@ -77,6 +83,7 @@ io.on("connection", socket => {
     });
 
     socket.on("add user", name => {
+        users[name] = socket.id;
         console.log("USERS ADD", name);
         socket.emit(name, socket.id);
         socket.emit('server connected', socket.id);
