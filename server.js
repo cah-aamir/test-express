@@ -1,6 +1,6 @@
 var app = require('express')();
 var bodyParser = require('body-parser');
-var Pusher = require('pusher');
+// var Pusher = require('pusher');
 const cors = require("cors");
 const multipart = require("connect-multiparty");
 // const http = require('http').Server(app);
@@ -185,6 +185,9 @@ app.get("/api/apex2", function (req, res) {
 });
 app.get("/api/apex3", function (req, res) {
     res.sendFile('apex-3.jpg', { root: __dirname });
+});
+app.get("/api/apex4", function (req, res) {
+    res.sendFile('apex-4.jpg', { root: __dirname });
 });
 
 //     pusher.trigger('events-channel', 'new-like', {
