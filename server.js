@@ -178,13 +178,13 @@ app.get("/api/contacts", function (req, res) {
 });
 
 app.get("/api/apex1", function (req, res) {
-    res.sendFile('Apex-1', { root: __dirname });
+    res.sendFile('Apex-1.jpg', { root: __dirname });
 });
 app.get("/api/apex2", function (req, res) {
-    res.sendFile('apex-2', { root: __dirname });
+    res.sendFile('apex-2.jpg', { root: __dirname });
 });
 app.get("/api/apex3", function (req, res) {
-    res.sendFile('apex-3', { root: __dirname });
+    res.sendFile('apex-3.jpg', { root: __dirname });
 });
 
 //     pusher.trigger('events-channel', 'new-like', {
