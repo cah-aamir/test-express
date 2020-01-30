@@ -177,6 +177,16 @@ app.get("/api/contacts", function (req, res) {
     res.json({ message: "CONTACTS FOR YOU" });
 });
 
+app.get("/api/apex1", function (req, res) {
+    res.sendFile('Apex-1', { root: __dirname });
+});
+app.get("/api/apex2", function (req, res) {
+    res.sendFile('apex-2', { root: __dirname });
+});
+app.get("/api/apex3", function (req, res) {
+    res.sendFile('apex-3', { root: __dirname });
+});
+
 //     pusher.trigger('events-channel', 'new-like', {
 //         "message": "hello books"
 //     });
