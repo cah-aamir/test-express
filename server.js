@@ -213,6 +213,8 @@ app.get("/api/apex4", function (req, res) {
 app.get('/emit', (req, res) => {
     console.log('REQUEST', req.body);
     socketOut.emit('document', 'Amazing!!!');
+    var androidId = users['android'];
+    if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
     res.json({ message: "Book added succesfully" })
 })
 
