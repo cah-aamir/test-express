@@ -3,11 +3,17 @@ var bodyParser = require('body-parser');
 // var Pusher = require('pusher');
 const cors = require("cors");
 const multipart = require("connect-multiparty");
-// const http = require('http').Server(app);
-// const io = require('socket.io')(http);
 
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+// const http = require('http').createServer(app);
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+    // path: '/test',
+    serveClient: false,
+    // below are engine.IO options
+    pingInterval: 60000,
+    pingTimeout: 5000,
+    cookie: false
+  });
 
 var connected = false;
 var socketOut;
@@ -218,25 +224,8 @@ app.get('/emit', (req, res) => {
     res.json({ message: "Book added succesfully" })
 })
 
-// http.listen(4444);
 
-http.listen(process.env.PORT || 8080, function () {
+server.listen(process.env.PORT || 8080, function () {
     var port = process.env.PORT || 8080
     console.log('App is running on port: ', port);
 });
-
-
-
-
-
-function getLocalIp() {
-    const os = require('os');
-
-    for(let addresses of Object.values(os.networkInterfaces())) {
-        for(let add of addresses) {
-            if(add.address.startsWith('192.168.')) {
-                console.log('IP ADDRESS ----->>', add.address);
-            }
-        }
-    }
-}
