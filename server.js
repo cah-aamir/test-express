@@ -10,7 +10,7 @@ const io = require('socket.io')(server, {
     // path: '/test',
     serveClient: false,
     // below are engine.IO options
-    pingInterval: 30000,
+    pingInterval: 60000,
     pingTimeout: 5000,
     cookie: false
   });
@@ -20,6 +20,7 @@ var socketOut;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.pingTimeout
 // app.use(function (req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
