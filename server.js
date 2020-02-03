@@ -20,16 +20,6 @@ var socketOut;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.pingTimeout
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
-
-// setInterval(()=> {
-//     if (connected) socketOut.emit('document', 'Amazing!!!');
-// }, 3000)
 
 const multipartMiddleware = multipart();
 const documents = {
@@ -54,11 +44,8 @@ io.on("connection", socket => {
     };
 
     socket.on("getDoc", docId => {
-        // var usersArr = Object.keys(users);
-        // var lastUser = users[usersArr[usersArr.length -1]];
-        // io.to(lastUser).emit('aamir', 'TARGETTING ID');
-        var androidId = users['android'];
-        if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
+        // var androidId = users['android'];
+        // if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
 
         safeJoin(docId);
         console.log("getDoc called, doc: " + documents[docId]);
@@ -83,16 +70,16 @@ io.on("connection", socket => {
         console.log("USERS AFTER MAP", users);
         console.log("Username", name, " Socket ID: ", socket.id);
         socket.emit(name, socket.id);
-        var androidId = users['android'];
-        if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
+        // var androidId = users['android'];
+        // if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
     });
 
     socket.on("login", name => {
         console.log("USERS LOGIN", name);
         socket.emit(name, socket.id);
         socket.emit('server connected', socket.id);
-        var androidId = users['android'];
-        if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
+        // var androidId = users['android'];
+        // if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
     });
 
     socket.on("add user", name => {
@@ -197,32 +184,12 @@ app.get("/api/apex4", function (req, res) {
     res.sendFile('apex-4.jpg', { root: __dirname });
 });
 
-//     pusher.trigger('events-channel', 'new-like', {
-//         "message": "hello books"
-//     });
-//     res.status(200).json(obj);
-// });
-
-// app.post('/update', multipartMiddleware, (req, res) => {
-//     console.log('REQUEST', req.body);
-//     trigger(req.body.userName);
-//     res.json({ message: "Book added succesfully" })
-// })
-
-// function trigger(channelName) {
-//     setInterval(() => {
-//         pusher.trigger('events-channel-' + channelName, 'new-like', {
-//             "message": "hello " + channelName
-//         });
-//     }, 5000);
-// }
-
 app.get('/emit', (req, res) => {
     console.log('REQUEST', req.body);
     socketOut.emit('document', 'Amazing!!!');
     var androidId = users['android'];
-    if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
-    res.json({ message: "Book added succesfully" })
+    // if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
+    // res.json({ message: "Book added succesfully" })
 })
 
 
