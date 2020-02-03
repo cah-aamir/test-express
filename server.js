@@ -54,8 +54,11 @@ io.on("connection", socket => {
     };
 
     socket.on("getDoc", docId => {
-        // var androidId = users['android'];
-        // if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
+        // var usersArr = Object.keys(users);
+        // var lastUser = users[usersArr[usersArr.length -1]];
+        // io.to(lastUser).emit('aamir', 'TARGETTING ID');
+        var androidId = users['android'];
+        if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
 
         safeJoin(docId);
         console.log("getDoc called, doc: " + documents[docId]);
@@ -80,9 +83,9 @@ io.on("connection", socket => {
         console.log("USERS AFTER MAP", users);
         console.log("Username", name, " Socket ID: ", socket.id);
         socket.emit(name, socket.id);
-    //     var androidId = users['android'];
-    //     if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
-    // });
+        var androidId = users['android'];
+        if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
+    });
 
     socket.on("login", name => {
         console.log("USERS LOGIN", name);
@@ -193,6 +196,26 @@ app.get("/api/apex3", function (req, res) {
 app.get("/api/apex4", function (req, res) {
     res.sendFile('apex-4.jpg', { root: __dirname });
 });
+
+//     pusher.trigger('events-channel', 'new-like', {
+//         "message": "hello books"
+//     });
+//     res.status(200).json(obj);
+// });
+
+// app.post('/update', multipartMiddleware, (req, res) => {
+//     console.log('REQUEST', req.body);
+//     trigger(req.body.userName);
+//     res.json({ message: "Book added succesfully" })
+// })
+
+// function trigger(channelName) {
+//     setInterval(() => {
+//         pusher.trigger('events-channel-' + channelName, 'new-like', {
+//             "message": "hello " + channelName
+//         });
+//     }, 5000);
+// }
 
 app.get('/emit', (req, res) => {
     console.log('REQUEST', req.body);
