@@ -11,7 +11,7 @@ const io = require('socket.io')(server, {
     serveClient: false,
     // below are engine.IO options
     pingInterval: 120000,
-    pingTimeout: 10000,
+    pingTimeout: 5000,
     cookie: false
   });
 
