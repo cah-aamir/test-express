@@ -8,10 +8,11 @@ const multipart = require("connect-multiparty");
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
     // below are engine.IO options
-    pingInterval: 60000,
+    pingInterval: 120000,
     pingTimeout: 5000,
     // cookie: false
   });
+  io.set('transports', ['websocket']);
 
 var connected = false;
 var socketOut;
