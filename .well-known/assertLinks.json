@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.resideo.lifecare.genesis_mobile",
+      "sha256_cert_fingerprints": [" 30:66:1F:D1:3F:46:76:96:91:CB:17:42:2C:79:A5:91:23:99:5C:AD:1C:7F:3B:FC:D0:BE:FB:66:2A:86:63:AD"]
+    }
+  }
+]
