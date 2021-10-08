@@ -182,6 +182,9 @@ app.get("/api/apex3", function (req, res) {
 app.get("/api/apex4", function (req, res) {
     res.sendFile('apex-4.jpg', { root: __dirname });
 });
+app.get("/.well-known/assertLinks.json", function (req, res) {
+    res.sendFile('./well-known/assertLinks.json', { root: __dirname });
+});
 
 app.get('/emit', (req, res) => {
     console.log('REQUEST', req.body);
