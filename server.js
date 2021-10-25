@@ -185,8 +185,8 @@ app.get("/api/apex4", function (req, res) {
 app.get("/.well-known/assetlinks.json", function (req, res) {
     res.sendFile('./.well-known/assetlinks.json', { root: __dirname });
 });
-app.get("/apple-app-site-association", function (req, res) {
-    res.sendFile('apple-app-site-association', { root: __dirname });
+app.get("/.well-known/apple-app-site-association", function (req, res) {
+    res.sendFile('./.well-known/apple-app-site-association', { root: __dirname });
 });
 
 app.get('/emit', (req, res) => {
