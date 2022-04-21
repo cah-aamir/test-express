@@ -108,6 +108,7 @@ io.on("connection", socket => {
 var obj = {
     "colors": [
         {
+            "id": 100,
             "color": "black",
             "category": "hue",
             "type": "primary",
@@ -117,6 +118,7 @@ var obj = {
             }
         },
         {
+            "id": 101,
             "color": "white",
             "category": "value",
             "code": {
@@ -125,6 +127,7 @@ var obj = {
             }
         },
         {
+            "id": 102,
             "color": "red",
             "category": "hue",
             "type": "primary",
@@ -134,6 +137,7 @@ var obj = {
             }
         },
         {
+            "id": 103,
             "color": "blue",
             "category": "hue",
             "type": "primary",
@@ -143,6 +147,7 @@ var obj = {
             }
         },
         {
+            "id": 104,
             "color": "yellow",
             "category": "hue",
             "type": "primary",
@@ -152,6 +157,7 @@ var obj = {
             }
         },
         {
+            "id": 105,
             "color": "green",
             "category": "hue",
             "type": "secondary",
@@ -168,6 +174,10 @@ app.get("/api/contacts", function (req, res) {
     //     "message": "hello world"
     // })
     res.json({ message: "CONTACTS FOR YOU" });
+});
+
+app.get("/api/colors", function (req, res) {
+    res.json({ colors: obj });
 });
 
 app.get("/api/apex1", function (req, res) {
