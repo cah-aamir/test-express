@@ -177,7 +177,7 @@ app.get("/api/contacts", function (req, res) {
 });
 
 app.get("/api/colors", function (req, res) {
-    res.json({ colors: obj });
+    res.json(obj);
 });
 
 app.get("/api/apex1", function (req, res) {
