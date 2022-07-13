@@ -3,8 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.resideo.lifecare.genesis_mobile",
-      "sha256_cert_fingerprints": ["30:66:1F:D1:3F:46:76:96:91:CB:17:42:2C:79:A5:91:23:99:5C:AD:1C:7F:3B:FC:D0:BE:FB:66:2A:86:63:AD","3E:9D:C7:F6:83:54:F7:7B:21:65:6F:7C:16:25:7D:E5:56:57:11:38:BD:AD:CF:84:97:87:44:06:DF:94:E5:9F","4E:BE:D0:32:CC:32:CC:DD:D5:7B:60:AC:4A:1A:E6:32:AB:9C:42:73:FC:99:C3:C2:F6:DB:85:F2:ED:E3:AC:A6","08:C5:29:B4:BF:71:E4:D5:0C:CF:CA:97:24:CE:04:76:FB:CB:81:3E:89:B1:1A:9F:80:DF:7E:D3:1F:4E:85:7C"]
+      "package_name": "com.cleararchhealth.genesismobile",
+      "sha256_cert_fingerprints": ["30:66:1F:D1:3F:46:76:96:91:CB:17:42:2C:79:A5:91:23:99:5C:AD:1C:7F:3B:FC:D0:BE:FB:66:2A:86:63:AD","3E:9D:C7:F6:83:54:F7:7B:21:65:6F:7C:16:25:7D:E5:56:57:11:38:BD:AD:CF:84:97:87:44:06:DF:94:E5:9F","4E:BE:D0:32:CC:32:CC:DD:D5:7B:60:AC:4A:1A:E6:32:AB:9C:42:73:FC:99:C3:C2:F6:DB:85:F2:ED:E3:AC:A6","08:C5:29:B4:BF:71:E4:D5:0C:CF:CA:97:24:CE:04:76:FB:CB:81:3E:89:B1:1A:9F:80:DF:7E:D3:1F:4E:85:7C",
+	  "0C:22:AF:96:AE:E4:21:EA:6F:70:64:CC:37:C4:2E:AD:B4:C7:0D:A4:7D:A8:94:F1:F0:1F:BC:7A:C8:8F:E8:FD"]
     }
   }
 ]
