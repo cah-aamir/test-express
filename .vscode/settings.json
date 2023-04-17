@@ -1,4 +1,5 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/c1960f28-54b5-439b-9955-019ecf151376/resourceGroups/azure-sample-resources/providers/Microsoft.Web/sites/amr-nodeazure-sample",
-    "appService.deploySubpath": ""
+    "appService.deploySubpath": "",
+    "liveServer.settings.port": 5501
 }
