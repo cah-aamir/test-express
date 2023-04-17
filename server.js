@@ -209,13 +209,13 @@ app.get('/emit', (req, res) => {
     // res.json({ message: "Book added succesfully" })
 });
 
-// app.get("/vidyo", function (req, res) {
-//     res.sendFile('vidyo.html', { root: __dirname });
-// });
+app.get("/vidyo", function (req, res) {
+    res.sendFile('vidyo.html', { root: __dirname });
+});
 
-app.get('/vidyo', (req, res) => {
-    res.sendFile('vidyo.html', {root: path.join(__dirname, 'public')});
-  });
+// app.get('/vidyo', (req, res) => {
+//     res.sendFile('vidyo.html', {root: path.join(__dirname, 'public')});
+//   });
 
 server.listen(process.env.PORT || 8080, function () {
     var port = process.env.PORT || 8080
