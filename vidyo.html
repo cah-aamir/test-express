@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Vidyo Sample
+        </title>
+        <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8" /> -->
+        <!-- <link rel="stylesheet" href="VidyoClient.css"> -->
+        <link rel="stylesheet" href="https://static.platform.vidyo.io/vidyoclient/webrtc/latest/VidyoClient.css">
+    </head>
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            height: 95%;
+            width: 100%;
+            /* font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; */
+            font-weight: 300;
+            background: #363636;
+            color: white;
+        }
+        .controls button {
+            align-self: center;
+            position:absolute;
+            border: none;
+            outline: none;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+        .btnstart {
+            background-color: white;
+            background-image: url(./assets/callStart.png);
+            background-size: 28px;
+            font-size: 26px;
+        }
+        .btnend {
+            background-color: #6e1e14;
+            background-image: url(./assets/end_call.svg);
+            background-size: 28px;
+            font-size: 26px;
+
+        }
+        .align-center {
+            text-align:center;
+            margin: auto;
+        }
+        #renderer{
+            width: 100%;
+            height: 95%;
+        }
+    </style>
+    <body>
+
+        <!-- <h3>Hello Vidyo!</h3>
+        <button onClick="joinCall()"> Connect </button> -->
+        <div id="renderer"></div>
+        <div class="align-center">
+
+            <button class="btnstart" onclick="join()"> Join </button>
+            <button class="btnend" onclick="endCall()"> End </button>
+        </div>
+        <!-- <div class="controls">
+            <div>
+                <button id="btnStart" title="Start call" onclick="joinCall()" class="btnstart"> JOIN </button>
+            </div>
+            <button id="btnEnd" title="End call" onclick="endCall()" class="btnend"> END </button>
+        </div> -->
+        <script>
+            var isAppReady = false;
+            var isVidyoLoaded = false;
+            window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
+                console.log('flutterInAppWebViewPlatformReady &&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+                isAppReady = true;
+                if (isVidyoLoaded) {
+                console.log("letsGo() inside  flutterInAppWebViewPlatformReady <<<<<<<<<");
+                    letsGo();
+                }
+            });
+            var vidyoConnector;
+            function onVidyoClientLoaded() {
+                console.log("onVidyoClientLoaded() <<<<<<<<<")
+                isVidyoLoaded = true;
+                if (isAppReady) {
+                console.log("letsGo() inside  onVidyoClientLoaded <<<<<<<<<");
+                    letsGo();
+                }
+                // window.VC = new window.VidyoClientLib.VidyoClient('', () => {
+                //     setTimeout(() => {
+                //         init();
+                //     }, 3000);
+                //     console.log("VC initialized <<<<<<<<<")
+                // });
+            }
+
+            function letsGo() {
+                console.log("letsGo() <<<<<<<<<")
+                window.VC = new window.VidyoClientLib.VidyoClient('', () => {
+                    setTimeout(() => {
+                        init();
+                    }, 1500);
+                });
+            }
+            
+            async function init() {
+                console.log("Vidyo client init()");
+                try {
+                    vidyoConnector = await VC.CreateVidyoConnector({
+                        viewId: "renderer", // Div ID where the composited video will be rendered, see VidyoConnector.html;
+                        viewStyle: "VIDYO_CONNECTORVIEWSTYLE_Default", // Visual style of the composited renderer
+                        remoteParticipants: 8,     // Maximum number of participants to render
+                        logFileFilter: "debug@VidyoClient debug@VidyoSDP debug@VidyoResourceManager",
+                        logFileName: "",
+                        userData: 0,
+                        constraints: {},
+                    });
+                    console.log("create success");
+                    var version = await vidyoConnector.GetVersion();
+                    console.log("Version >>>>>>>>> " + version);
+                } catch (error) {
+                    console.error('creating failed', error);
+                }
+            }
+
+            async function joinCall() {
+                vidyoConnector.ConnectToRoomAsGuest({
+                    host: "https://resideo-lifecare.platform.vidyo.io", // HOST
+                    roomKey: "tL35Lu4RZI", //ROOM KEY
+                    displayName: "Amir",
+                    roomPin: "123456",
+                    onSuccess: () => {
+                        console.log(`vidyoConnector.ConnectToRoomAsGuest : onSuccess callback received`);
+                    },
+                    onFailure: (reason) => {
+                        console.error("vidyoConnector.Connect : onFailure callback received", reason);
+                        // handleDisconnect();
+                    },
+                    onDisconnected: (reason) => {
+                        console.log("vidyoConnector.Connect : onDisconnected callback received", reason);
+                        // handleDisconnect();
+                    }
+                });
+            }
+            function endCall() {
+               vidyoConnector.Disconnect();
+            }
+        </script>
+    	<script src="https://static.platform.vidyo.io/vidyoclient/webrtc/latest/VidyoClient.js" onload='onVidyoClientLoaded()'></script>
+    	<!-- <script src="https://static.platform.vidyo.io/vidyoclient/webrtc/22.5.0/VidyoClient.js" onload='onVidyoClientLoaded()'></script> -->
+    	<!-- <script src="https://static.platform.vidyo.io/vidyoclient/webrtc/22.1.0/VidyoClient.js" onload='onVidyoClientLoaded()'></script> -->
+
+    </body>
+</html>

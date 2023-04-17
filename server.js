@@ -205,7 +205,11 @@ app.get('/emit', (req, res) => {
     var androidId = users['android'];
     // if (androidId )io.to(androidId).emit('aamir', 'TARGETTING ID');
     // res.json({ message: "Book added succesfully" })
-})
+});
+
+app.get('/vidyo', function(req, res){
+    res.sendFile('vidyo.html', { root: __dirname });
+});
 
 
 server.listen(process.env.PORT || 8080, function () {
