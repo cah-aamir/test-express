@@ -69,16 +69,16 @@
             <button id="btnEnd" title="End call" onclick="endCall()" class="btnend"> END </button>
         </div> -->
         <script>
-            var isAppReady = false;
+            var isAppReady = true;
             var isVidyoLoaded = false;
-            window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
-                console.log('flutterInAppWebViewPlatformReady &&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-                isAppReady = true;
-                if (isVidyoLoaded) {
-                console.log("letsGo() inside  flutterInAppWebViewPlatformReady <<<<<<<<<");
-                    letsGo();
-                }
-            });
+            // window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
+            //     console.log('flutterInAppWebViewPlatformReady &&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+            //     isAppReady = true;
+            //     if (isVidyoLoaded) {
+            //     console.log("letsGo() inside  flutterInAppWebViewPlatformReady <<<<<<<<<");
+            //         letsGo();
+            //     }
+            // });
             var vidyoConnector;
             function onVidyoClientLoaded() {
                 console.log("onVidyoClientLoaded() <<<<<<<<<")
