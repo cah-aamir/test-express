@@ -25,6 +25,18 @@ var socketOut;
 //     }
 //     next();
 // });
+var cors = require ('cors');
+app.use(cors({
+    origin:['https://test-express-renderer.onrender.com'],
+    credentials:true
+}));
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "https://test-express-renderer.onrender.com");
+    res.header('Access-Control-Allow-Headers', true);
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    next();
+  });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -223,12 +235,6 @@ app.get("/vidyo", function (req, res) {
 // app.get('/vidyo', (req, res) => {
 //     res.sendFile('vidyo.html', {root: path.join(__dirname, 'public')});
 //   });
-
-server.setConfig((app) => {
-    var cors = require('cors');
-    app.use(cors({origin: `*`}));
-    app.options('https://test-express-renderer.onrender.com', cors());
-});
 
 server.listen(process.env.PORT || 8080, function () {
     var port = process.env.PORT || 8080
