@@ -17,7 +17,14 @@ const io = require('socket.io')(server, {
 var connected = false;
 var socketOut;
 app.use(cors());
-app.options('*', cors());
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','https://test-express-renderer.onrender.com');
+    if(req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
+        return res.status(200).json({});
+    }
+    next();
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
