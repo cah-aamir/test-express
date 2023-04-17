@@ -17,8 +17,20 @@ const io = require('socket.io')(server, {
 var connected = false;
 var socketOut;
 
-app.use(cors());
-app.options('*', cors());
+const corsOpts = {
+    origin: '*',
+  
+    methods: [
+      'GET',
+      'POST',
+    ],
+  
+    allowedHeaders: [
+      'Content-Type',
+    ],
+  };
+  
+app.use(cors(corsOpts));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
