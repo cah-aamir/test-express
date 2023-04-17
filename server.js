@@ -16,15 +16,15 @@ const io = require('socket.io')(server, {
 
 var connected = false;
 var socketOut;
-app.use(cors());
-app.use((req,res,next)=>{
-    res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','https://test-express-renderer.onrender.com');
-    if(req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
-        return res.status(200).json({});
-    }
-    next();
-});
+// app.use(cors());
+// app.use((req,res,next)=>{
+//     res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','https://test-express-renderer.onrender.com');
+//     if(req.method === 'OPTIONS') {
+//         res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
+//         return res.status(200).json({});
+//     }
+//     next();
+// });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -223,6 +223,12 @@ app.get("/vidyo", function (req, res) {
 // app.get('/vidyo', (req, res) => {
 //     res.sendFile('vidyo.html', {root: path.join(__dirname, 'public')});
 //   });
+
+server.setConfig((app) => {
+    var cors = require('cors');
+    app.use(cors({origin: `*`}));
+    app.options('https://test-express-renderer.onrender.com', cors());
+});
 
 server.listen(process.env.PORT || 8080, function () {
     var port = process.env.PORT || 8080
