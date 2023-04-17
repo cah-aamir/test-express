@@ -192,6 +192,7 @@ app.get("/api/apex3", function (req, res) {
 app.get("/api/apex4", function (req, res) {
     res.sendFile('apex-4.jpg', { root: __dirname });
 });
+
 app.get("/.well-known/assetlinks.json", function (req, res) {
     res.sendFile('./.well-known/assetlinks.json', { root: __dirname });
 });
@@ -212,7 +213,7 @@ app.get('/emit', (req, res) => {
 // });
 
 app.get('/vidyo', (req, res) => {
-    res.sendFile('index.html', {root: path.join(__dirname, 'public')});
+    res.sendFile('vidyo.html', {root: path.join(__dirname, 'public')});
   });
 
 server.listen(process.env.PORT || 8080, function () {
