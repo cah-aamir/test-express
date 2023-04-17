@@ -207,10 +207,9 @@ app.get('/emit', (req, res) => {
     // res.json({ message: "Book added succesfully" })
 });
 
-app.get('/vidyo', function(req, res){
+app.get("/vidyo", function (req, res) {
     res.sendFile('vidyo.html', { root: __dirname });
 });
-
 
 server.listen(process.env.PORT || 8080, function () {
     var port = process.env.PORT || 8080
