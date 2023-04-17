@@ -25,7 +25,6 @@ var socketOut;
 //     }
 //     next();
 // });
-var cors = require ('cors');
 app.use(cors({
     origin:['https://test-express-renderer.onrender.com'],
     credentials:true
