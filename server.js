@@ -17,6 +17,7 @@ const io = require('socket.io')(server, {
 var connected = false;
 var socketOut;
 app.use(cors());
+app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
